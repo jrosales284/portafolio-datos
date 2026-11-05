@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caso COMEX LATAM — Johanna Rosales</title>
+<meta name="description" content="Caso de estudio: del Excel desordenado y el mockup al dashboard de Power BI de factores de costo de importación.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="../css/data.css">
+<script src="../js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="logo" href="../index.html">{<b>JR</b>} data</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#projects"><span lang="es">← Todos los casos</span><span lang="en">← All cases</span></a></li>
+    </ul>
+    <div class="nav-tools">
+      <button class="chip-btn" id="langBtn">EN</button>
+      <button class="chip-btn" id="themeBtn">☾</button>
+      <button class="chip-btn menu-btn" id="menuBtn">☰</button>
+    </div>
+  </div>
+</nav>
+
+<header class="case-hero">
+  <div class="wrap">
+    <a class="back" href="../index.html#projects">← <span lang="es">Casos</span><span lang="en">Cases</span></a>
+    <p class="eyebrow">Power BI · UX · Data</p>
+    <h1><span lang="es">COMEX LATAM: del Excel caótico al dashboard que explica el costo real de importar</span><span lang="en">COMEX LATAM: from chaotic Excel to a dashboard that explains the true cost of importing</span></h1>
+    <p class="sec-sub" lang="es">Cómo convertí 4 años y medio de registros de importación de Chile y Perú en una herramienta de decisión, partiendo por un mockup en papel y terminando en un modelo Power BI con medidas DAX.</p>
+    <p class="sec-sub" lang="en">How I turned 4.5 years of Chile and Peru import records into a decision tool, starting from a paper mockup and ending with a Power BI model and DAX measures.</p>
+    <div class="meta">
+      <div><small lang="es">Rol</small><small lang="en">Role</small><p lang="es">Analista de datos + UX</p><p lang="en">Data analyst + UX</p></div>
+      <div><small lang="es">Período de datos</small><small lang="en">Data period</small><p lang="es">Ene 2022 – Jun 2026</p><p lang="en">Jan 2022 – Jun 2026</p></div>
+      <div><small lang="es">Volumen</small><small lang="en">Volume</small><p lang="es">889 operaciones · 2 países</p><p lang="en">889 operations · 2 countries</p></div>
+      <div><small>Stack</small><p>Power Query · DAX · Power BI · Python</p></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="steps-nav">
+    <a href="#s1">1 · <span lang="es">Problema</span><span lang="en">Problem</span></a>
+    <a href="#s2">2 · <span lang="es">Descubrimiento</span><span lang="en">Discovery</span></a>
+    <a href="#s3">3 · Mockup</a>
+    <a href="#s4">4 · <span lang="es">Limpieza</span><span lang="en">Cleaning</span></a>
+    <a href="#s5">5 · <span lang="es">Modelo y DAX</span><span lang="en">Model &amp; DAX</span></a>
+    <a href="#s6">6 · Dashboard</a>
+    <a href="#s7">7 · <span lang="es">Hallazgos</span><span lang="en">Insights</span></a>
+  </nav>
+</div>
+
+<!-- 1 -->
+<section class="step" id="s1"><div class="wrap">
+  <span class="step-num">1</span>
+  <h2><span lang="es">El problema de negocio</span><span lang="en">The business problem</span></h2>
+  <p class="sec-sub" lang="es">El área de comercio exterior sabía cuánto pagaba a cada proveedor (valor EXW), pero no cuánto costaba realmente dejar la mercadería en bodega. Flete, seguros y gastos de internación quedaban dispersos en planillas anuales.</p>
+  <p class="sec-sub" lang="en">The foreign-trade team knew what they paid each supplier (EXW value) but not what it really cost to land goods in the warehouse. Freight, insurance and customs costs were scattered across yearly spreadsheets.</p>
+  <div class="cols-2">
+    <div class="panel"><h4><span lang="es">Pregunta clave</span><span lang="en">Key question</span></h4>
+      <p lang="es">«¿Qué proveedores y qué tipo de flete nos están encareciendo cada importación, y vamos mejorando?»</p>
+      <p lang="en">"Which suppliers and freight modes are inflating each import, and are we improving?"</p></div>
+    <div class="panel"><h4><span lang="es">Métrica norte</span><span lang="en">North-star metric</span></h4>
+      <p lang="es"><b>Factor</b> = Total internado ÷ Valor EXW. Un factor 1,39 significa que por cada USD 1 de producto se pagan USD 1,39 al dejarlo en destino.</p>
+      <p lang="en"><b>Factor</b> = Total landed cost ÷ EXW value. A factor of 1.39 means every USD 1 of product costs USD 1.39 once delivered.</p></div>
+  </div>
+</div></section>
+
+<!-- 2 -->
+<section class="step" id="s2"><div class="wrap">
+  <span class="step-num">2</span>
+  <h2><span lang="es">Descubrimiento de datos</span><span lang="en">Data discovery</span></h2>
+  <p class="sec-sub" lang="es">Antes de dibujar nada, perfilé la fuente: un libro Excel con 9 hojas, una por año y país, con estructuras que no coincidían entre sí.</p>
+  <p class="sec-sub" lang="en">Before drawing anything, I profiled the source: an Excel workbook with 9 sheets, one per year and country, with structures that didn't match.</p>
+  <div class="panel">
+    <table class="clean">
+      <thead><tr><th lang="es">Problema encontrado</th><th lang="en">Issue found</th><th lang="es">Impacto</th><th lang="en">Impact</th></tr></thead>
+      <tbody>
+        <tr><td lang="es">Columnas desalineadas en Perú 2023 (el N° de PO aparecía en la columna AÑO)</td><td lang="en">Misaligned columns in Peru 2023 (PO numbers in the YEAR column)</td><td lang="es">Años inválidos, totales inflados</td><td lang="en">Invalid years, inflated totals</td></tr>
+        <tr><td lang="es">Filas de subtotal «Consolidado» mezcladas con el detalle</td><td lang="en">"Consolidated" subtotal rows mixed into detail</td><td lang="es">Doble conteo</td><td lang="en">Double counting</td></tr>
+        <tr><td lang="es">Un mismo proveedor escrito de varias formas</td><td lang="en">Same supplier spelled several ways</td><td lang="es">Ranking de proveedores fragmentado</td><td lang="en">Fragmented supplier ranking</td></tr>
+        <tr><td lang="es">Tipo de flete con valores libres (espacios, mayúsculas)</td><td lang="en">Free-text freight type (spaces, casing)</td><td lang="es">Categorías duplicadas</td><td lang="en">Duplicate categories</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div></section>
+
+<!-- 3 -->
+<section class="step" id="s3"><div class="wrap">
+  <span class="step-num">3</span>
+  <h2><span lang="es">Mockup de baja fidelidad</span><span lang="en">Low-fidelity mockup</span></h2>
+  <p class="sec-sub" lang="es">Apliqué UX al reporte: definí qué pregunta responde cada panel y su jerarquía de lectura (de arriba-izquierda hacia el detalle) antes de abrir Power BI. Esto evitó rehacer visuales y alineó expectativas con el área.</p>
+  <p class="sec-sub" lang="en">I applied UX to the report: each panel answers one question, following a reading hierarchy (top-left to detail) — defined before opening Power BI. That avoided rework and aligned expectations with the team.</p>
+  <div class="cols-2">
+    <div class="panel">
+      <svg class="wire" viewBox="0 0 520 360" role="img" aria-label="Wireframe del dashboard">
+        <rect x="10" y="10" width="500" height="34" rx="6"/><text x="22" y="32">Header · filtros: País / Año / Tipo flete</text>
+        <rect x="10" y="54" width="118" height="60" rx="6"/><text x="22" y="88">KPI Factor</text>
+        <rect x="137" y="54" width="118" height="60" rx="6"/><text x="149" y="88">KPI EXW</text>
+        <rect x="264" y="54" width="118" height="60" rx="6"/><text x="276" y="88">KPI Ops</text>
+        <rect x="392" y="54" width="118" height="60" rx="6"/><text x="404" y="88">KPI Internado</text>
+        <rect x="10" y="124" width="300" height="130" rx="6"/><text x="22" y="146">Tendencia factor · Chile vs Perú</text>
+        <rect x="320" y="124" width="190" height="130" rx="6"/><text x="332" y="146">Factor por tipo flete</text>
+        <rect x="10" y="264" width="300" height="86" rx="6"/><text x="22" y="286">Ranking proveedores</text>
+        <rect x="320" y="264" width="190" height="86" rx="6"/><text x="332" y="286">Tabla detalle PO</text>
+      </svg>
+    </div>
+    <div class="panel">
+      <h4><span lang="es">Decisiones de diseño</span><span lang="en">Design decisions</span></h4>
+      <ul lang="es">
+        <li><b>KPIs arriba:</b> respuesta en 3 segundos para gerencia.</li>
+        <li><b>Línea por país:</b> la tendencia importa más que el valor puntual.</li>
+        <li><b>Barras horizontales</b> para proveedores: nombres largos legibles.</li>
+        <li><b>Tabla al final:</b> el analista llega al detalle por drill-through, no al revés.</li>
+        <li>Un color de acento solo para lo que exige acción (factor alto).</li>
+      </ul>
+      <ul lang="en">
+        <li><b>KPIs on top:</b> a 3-second answer for management.</li>
+        <li><b>One line per country:</b> the trend matters more than a single value.</li>
+        <li><b>Horizontal bars</b> for suppliers: long names stay readable.</li>
+        <li><b>Table last:</b> analysts reach detail via drill-through, not the other way round.</li>
+        <li>One accent color reserved for what needs action (high factor).</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<!-- 4 -->
+<section class="step" id="s4"><div class="wrap">
+  <span class="step-num">4</span>
+  <h2><span lang="es">Limpieza y consolidación</span><span lang="en">Cleaning &amp; consolidation</span></h2>
+  <p class="sec-sub" lang="es">Consolidé las hojas anuales en una única tabla con columnas estándar: PAÍS, AÑO, MES, PO, PROVEEDOR, TIPO_FLETE, VALOR_EXW, TOTAL_INTERNADO, FACTOR.</p>
+  <p class="sec-sub" lang="en">I consolidated the yearly sheets into one table with standard columns: COUNTRY, YEAR, MONTH, PO, SUPPLIER, FREIGHT_TYPE, EXW_VALUE, TOTAL_LANDED, FACTOR.</p>
+  <div class="cols-2">
+    <div><pre><span class="c">// Power Query (M) — paso clave</span>
+<span class="k">let</span>
+  Fuente = Excel.Workbook(File.Contents(Ruta), <span class="k">true</span>),
+  Hojas  = Table.SelectRows(Fuente, <span class="k">each</span> [Kind] = <span class="s">"Sheet"</span>),
+  <span class="c">// El año se toma del nombre de la hoja,
+  // no de la columna (corrige Perú 2023)</span>
+  ConAño = Table.AddColumn(Hojas, <span class="s">"AÑO"</span>,
+      <span class="k">each</span> Number.From(Text.End([Name], 4))),
+  Expandir = Table.ExpandTableColumn(ConAño, <span class="s">"Data"</span>, Columnas),
+  SinSubtotal = Table.SelectRows(Expandir,
+      <span class="k">each</span> <span class="f">not</span> Text.Contains([PO], <span class="s">"Consolidado"</span>)),
+  Flete = Table.TransformColumns(SinSubtotal,
+      {{<span class="s">"TIPO_FLETE"</span>, <span class="k">each</span> Text.Upper(Text.Trim(_))}})
+<span class="k">in</span>
+  Flete</pre></div>
+    <div class="panel"><h4><span lang="es">Resultado</span><span lang="en">Result</span></h4>
+      <ul lang="es"><li>9 hojas → 1 tabla de hechos con 889 operaciones.</li><li>Año forzado desde el nombre de la hoja.</li><li>Subtotales eliminados; proveedores normalizados.</li><li>Tipos de flete unificados: DHL, MAR, AIR, DSV, UPS.</li><li>Pipeline reproducible: cada mes solo se agrega la hoja nueva y se actualiza.</li></ul>
+      <ul lang="en"><li>9 sheets → 1 fact table with 889 operations.</li><li>Year forced from the sheet name.</li><li>Subtotals removed; suppliers normalized.</li><li>Freight types unified: DHL, MAR, AIR, DSV, UPS.</li><li>Reproducible pipeline: each month you just add the new sheet and refresh.</li></ul></div>
+  </div>
+</div></section>
+
+<!-- 5 -->
+<section class="step" id="s5"><div class="wrap">
+  <span class="step-num">5</span>
+  <h2><span lang="es">Modelo y medidas DAX</span><span lang="en">Model &amp; DAX measures</span></h2>
+  <p class="sec-sub" lang="es">Medidas explícitas en lugar de agregaciones implícitas, para que cada visual use la misma definición de negocio.</p>
+  <p class="sec-sub" lang="en">Explicit measures instead of implicit aggregations, so every visual uses the same business definition.</p>
+<pre><span class="f">Factor Promedio</span>  = <span class="k">AVERAGE</span>( COMEX[FACTOR] )
+<span class="f">Total EXW</span>        = <span class="k">SUM</span>( COMEX[VALOR_EXW] )
+<span class="f">Total Internado</span>  = <span class="k">SUM</span>( COMEX[TOTAL_INTERNADO] )
+<span class="f">Num Operaciones</span>  = <span class="k">COUNTROWS</span>( COMEX )
+<span class="f">Costo Flete</span>      = [Total Internado] - [Total EXW]</pre>
+</div></section>
+
+<!-- 6 -->
+<section class="step" id="s6"><div class="wrap">
+  <span class="step-num">6</span>
+  <h2><span lang="es">Dashboard interactivo</span><span lang="en">Interactive dashboard</span></h2>
+  <p class="sec-sub" lang="es">Versión web del reporte, construida con los resultados del modelo. Cambia el país y haz clic en las barras de flete.</p>
+  <p class="sec-sub" lang="en">Web version of the report, built from the model's results. Switch country and click the freight bars.</p>
+
+  <div class="dash">
+    <div class="dash-top">
+      <h3>COMEX LATAM · <span lang="es">Factores de costo</span><span lang="en">Cost factors</span></h3>
+      <div class="seg" id="countrySeg">
+        <button data-c="both" class="on"><span lang="es">Ambos</span><span lang="en">Both</span></button>
+        <button data-c="cl">Chile</button>
+        <button data-c="pe"><span lang="es">Perú</span><span lang="en">Peru</span></button>
+      </div>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><small lang="es">Factor promedio</small><small lang="en">Average factor</small><b id="kFactor">1,39</b></div>
+      <div class="kpi" style="border-color:#12a37a"><small lang="es">Valor EXW total</small><small lang="en">Total EXW value</small><b>USD 9,72M</b></div>
+      <div class="kpi" style="border-color:#f2c811"><small lang="es">Operaciones</small><small lang="en">Operations</small><b>889</b></div>
+      <div class="kpi" style="border-color:#7b5cff"><small lang="es">Factor 1S 2026</small><small lang="en">H1 2026 factor</small><b>1,37 <span style="font-size:.8rem;color:#12a37a">▼ vs 1,40</span></b></div>
+    </div>
+    <div class="charts">
+      <div class="box"><h5><span lang="es">Factor anual por país</span><span lang="en">Yearly factor by country</span></h5><canvas id="cTrend"></canvas></div>
+      <div class="box"><h5><span lang="es">Factor por tipo de flete (clic)</span><span lang="en">Factor by freight type (click)</span></h5><canvas id="cFlete"></canvas>
+        <p class="note" id="fleteInfo"></p></div>
+      <div class="box wide" style="min-height:220px"><h5><span lang="es">Factor por proveedor (muestra, anonimizada)</span><span lang="en">Factor by supplier (sample, anonymized)</span></h5><div style="position:relative;height:190px"><canvas id="cProv"></canvas></div></div>
+    </div>
+    <p class="note" lang="es">Proveedores anonimizados por confidencialidad. Valores agregados del modelo Power BI.</p>
+    <p class="note" lang="en">Suppliers anonymized for confidentiality. Aggregated values from the Power BI model.</p>
+  </div>
+
+
+</div></section>
+
+<!-- 7 -->
+<section class="step" id="s7" style="border-bottom:0"><div class="wrap">
+  <span class="step-num">7</span>
+  <h2><span lang="es">Hallazgos y recomendaciones</span><span lang="en">Insights &amp; recommendations</span></h2>
+  <div class="cols-3" style="margin-top:20px">
+    <div class="panel insight"><b>1,54</b><p lang="es">Courier (DHL) concentra la mayoría de las operaciones y tiene el factor más alto. Consolidar envíos pequeños es la mayor palanca de ahorro.</p><p lang="en">Courier (DHL) handles most operations and has the highest factor. Consolidating small shipments is the biggest savings lever.</p></div>
+    <div class="panel insight"><b>1,16</b><p lang="es">El flete marítimo es ~25% más eficiente y mueve cerca del 72% del valor importado.</p><p lang="en">Sea freight is ~25% more efficient and moves about 72% of imported value.</p></div>
+    <div class="panel insight"><b>↗ PE</b><p lang="es">Chile mejoró desde 2024, pero Perú subió a 1,52 en 2025: sus costos de internación requieren revisión.</p><p lang="en">Chile improved after 2024, but Peru rose to 1.52 in 2025: its landing costs need review.</p></div>
+  </div>
+  <div class="panel" style="margin-top:20px">
+    <h4><span lang="es">Lo que aprendí</span><span lang="en">What I learned</span></h4>
+    <p lang="es">La mayor parte del valor del proyecto estuvo antes del primer gráfico: entender la pregunta y limpiar la fuente. Diseñar el mockup primero hizo que construir en Power BI fuera directo, sin rehacer visuales.</p>
+    <p lang="en">Most of the project's value came before the first chart: understanding the question and cleaning the source. Designing the mockup first made the Power BI build straightforward, with no visual rework.</p>
+  </div>
+  <div class="btns" style="margin-top:30px"><a class="btn btn-primary" href="../index.html#projects">← <span lang="es">Ver más casos</span><span lang="en">More cases</span></a></div>
+</div></section>
+
+<footer>© 2026 Johanna Rosales</footer>
+
+<script>
+(function(){
+  const years=[2022,2023,2024,2025,2026];
+  const CL=[1.35,1.42,1.55,1.29,1.32], PE=[1.25,1.33,1.40,1.52,1.49];
+  const flete=[{n:'DHL',ops:452,f:1.54},{n:'AIR',ops:106,f:1.31},{n:'UPS',ops:3,f:1.19},{n:'MAR',ops:237,f:1.16},{n:'DSV',ops:7,f:1.11}];
+  const prov=[{n:'A · Europa',f:1.63},{n:'B · Italia',f:1.37},{n:'C · Francia',f:1.36},{n:'D · Austria',f:1.13}];
+  let country='both', charts=[];
+  const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const fmt=n=>document.documentElement.dataset.lang==='es'?n.toFixed(2).replace('.',','):n.toFixed(2);
+
+  function draw(){
+    if(!window.Chart) return;
+    charts.forEach(c=>c.destroy()); charts=[];
+    const text=css('--muted'), grid=css('--line'), acc=css('--accent');
+    Chart.defaults.color=text; Chart.defaults.font.family='Inter';
+    const es=document.documentElement.dataset.lang==='es';
+    const ds=[];
+    if(country!=='pe') ds.push({label:'Chile',data:CL,borderColor:acc,backgroundColor:acc,tension:.3,borderWidth:3,pointRadius:4});
+    if(country!=='cl') ds.push({label:es?'Perú':'Peru',data:PE,borderColor:'#f29a0c',backgroundColor:'#f29a0c',tension:.3,borderWidth:3,pointRadius:4});
+    charts.push(new Chart(cTrend,{type:'line',data:{labels:years.map(y=>y===2026?'2026 (1S)':y),datasets:ds},
+      options:{responsive:true,plugins:{legend:{position:'bottom'}},scales:{y:{min:1.1,max:1.7,grid:{color:grid}},x:{grid:{display:false}}}}}));
+    charts.push(new Chart(cFlete,{type:'bar',data:{labels:flete.map(x=>x.n),datasets:[{data:flete.map(x=>x.f),
+      backgroundColor:flete.map(x=>x.f>=1.4?'#e5484d':acc),borderRadius:6}]},
+      options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{min:1,max:1.7,grid:{color:grid}},y:{grid:{display:false}}},
+      onClick:(e,el)=>{if(!el.length)return;const x=flete[el[0].index];
+        fleteInfo.textContent=es?`${x.n}: ${x.ops} operaciones · factor ${fmt(x.f)}`:`${x.n}: ${x.ops} operations · factor ${fmt(x.f)}`;}}}));
+    charts.push(new Chart(cProv,{type:'bar',data:{labels:prov.map(x=>(es?'Proveedor ':'Supplier ')+x.n),datasets:[{data:prov.map(x=>x.f),
+      backgroundColor:prov.map(x=>x.f>=1.5?'#e5484d':css('--accent-3')),borderRadius:6}]},
+      options:{maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{min:1,max:1.7,grid:{color:grid}},y:{grid:{display:false}}}}}));
+    kFactor.textContent = fmt(1.39);
+    if(!fleteInfo.textContent) fleteInfo.textContent = es?'Haz clic en una barra para ver el detalle.':'Click a bar to see details.';
+  }
+  document.querySelectorAll('#countrySeg button').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('#countrySeg button').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on'); country=b.dataset.c; draw();
+  }));
+  document.addEventListener('ui-change',()=>{fleteInfo.textContent='';draw();});
+})();
+</script>
+</body>
+</html>

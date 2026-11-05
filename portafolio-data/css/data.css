@@ -1,0 +1,28 @@
+/* Tema del portafolio de datos */
+:root{--accent:#0e7c86;--accent-3:#2f6bff}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--accent:#4fc3cc}}
+:root[data-theme="dark"]{--accent:#4fc3cc}
+.hero h1 .hl{background:linear-gradient(90deg,var(--accent),#2f6bff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.avatar{background:conic-gradient(#0e7c86,#2f6bff,#f2c811,#0e7c86)}
+.contact-box{background:linear-gradient(135deg,#0e7c86,#1d4ed8)}
+.contact-box .btn{color:#0b3b40}
+
+/* Pipeline */
+.pipeline{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:28px 0 8px;counter-reset:p}
+.pipe{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:4px;position:relative}
+.pipe b{font:700 .78rem 'JetBrains Mono',monospace;color:var(--accent)}
+.pipe span{font:700 1.02rem var(--display)}
+.pipe small{color:var(--muted);font-size:.78rem}
+.pipe:not(:last-child)::after{content:"→";position:absolute;right:-10px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.9rem;z-index:1}
+@media(max-width:960px){.pipeline{grid-template-columns:repeat(3,1fr)}.pipe::after{display:none}}
+@media(max-width:520px){.pipeline{grid-template-columns:1fr 1fr}}
+
+/* Governance */
+.gov{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+@media(max-width:900px){.gov{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.gov{grid-template-columns:1fr}}
+.gov-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;gap:8px}
+.gov-ic{font-size:1.5rem}
+.gov-card h4{font-size:1.05rem}
+.gov-card p{color:var(--muted);font-size:.92rem}
+.gov-card small{margin-top:auto;padding-top:8px;border-top:1px dashed var(--line);font-size:.78rem;font-weight:600;color:var(--accent)}

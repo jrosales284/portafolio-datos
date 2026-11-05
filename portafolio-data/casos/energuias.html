@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Energuias — Johanna Rosales</title>
+<meta name="description" content="Proyectos para Energuias Chile: intranet SharePoint, app interna en React Native y cuadro de mando en Power BI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="../css/data.css">
+<script src="../js/main.js"></script>
+<style>
+  .proj{padding:72px 0;border-bottom:1px solid var(--line)}
+  .proj:last-of-type{border-bottom:0}
+  .proj-head{display:flex;align-items:center;gap:14px;margin-bottom:10px;flex-wrap:wrap}
+  .proj-tag{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:8px;color:#fff}
+  .shot{border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);margin:26px 0 30px;background:var(--surface-2)}
+  .shot img{width:100%;height:auto;cursor:zoom-in}
+  .tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-top:18px}
+  .tool{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+  .tool b{display:flex;align-items:center;gap:8px;font-size:.98rem;margin-bottom:6px}
+  .tool p{color:var(--muted);font-size:.9rem}
+  .tool .ic{width:28px;height:28px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;color:#fff}
+  .lightbox{position:fixed;inset:0;background:rgba(5,8,20,.92);display:none;align-items:center;justify-content:center;z-index:100;padding:16px;cursor:zoom-out}
+  .lightbox.on{display:flex}
+  .lightbox img{max-width:100%;max-height:100%;border-radius:10px}
+  .intro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+  .intro-grid a{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;color:var(--text)}
+  .intro-grid a:hover{border-color:var(--accent)}
+  .intro-grid small{color:var(--muted);display:block}
+  @media(max-width:900px){.intro-grid{grid-template-columns:1fr 1fr}}@media(max-width:520px){.intro-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="logo" href="../index.html">{<b>JR</b>} data</a>
+    <ul class="nav-links">
+      <li><a href="#sharepoint">SharePoint</a></li>
+      <li><a href="#powerbi">Power BI</a></li>
+      <li><a href="#cotizador"><span lang="es">Cotizador</span><span lang="en">Quoter</span></a></li>
+      <li><a href="../index.html#projects"><span lang="es">← Todos los casos</span><span lang="en">← All cases</span></a></li>
+    </ul>
+    <div class="nav-tools">
+      <button class="chip-btn" id="langBtn">EN</button>
+      <button class="chip-btn" id="themeBtn">☾</button>
+      <button class="chip-btn menu-btn" id="menuBtn">☰</button>
+    </div>
+  </div>
+</nav>
+
+<header class="case-hero">
+  <div class="wrap">
+    <a class="back" href="../index.html#projects">← <span lang="es">Casos</span><span lang="en">Cases</span></a>
+    <p class="eyebrow">Power BI · SharePoint · Microsoft 365</p>
+    <h1><span lang="es">Energuias Chile: un ecosistema digital para decidir más rápido</span><span lang="en">Energuias Chile: a digital ecosystem for faster decisions</span></h1>
+    <p class="sec-sub" lang="es">Tres soluciones de datos dentro del ecosistema Microsoft: una intranet en SharePoint como fuente única de información, un cuadro de mando en Power BI para la gerencia y un cotizador maestro de fletes con modelo de costos para el área de ventas.</p>
+    <p class="sec-sub" lang="en">Three data solutions within the Microsoft ecosystem: a SharePoint intranet as a single source of information, a Power BI scorecard for management and a master freight quoter with a cost model for the sales team.</p>
+    <div class="intro-grid">
+      <a href="#sharepoint"><b>01 · SharePoint</b><small lang="es">Intranet para la toma de decisiones</small><small lang="en">Decision-making intranet</small></a>
+      <a href="#powerbi"><b>02 · Power BI</b><small lang="es">Cuadro de Mando Integral 2026</small><small lang="en">2026 Balanced Scorecard</small></a>
+      <a href="#cotizador"><b>03 · Cotizador</b><small lang="es">Cotizador Maestro de flete EXW</small><small lang="en">Master EXW freight quoter</small></a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== 1 SHAREPOINT ===== -->
+<section class="proj" id="sharepoint"><div class="wrap">
+  <div class="proj-head"><span class="proj-tag" style="background:#038387">01 · SharePoint</span><span class="proj-tag" style="background:#0078d4">Microsoft 365</span></div>
+  <h2 class="sec-title"><span lang="es">Intranet corporativa en SharePoint</span><span lang="en">Corporate SharePoint intranet</span></h2>
+  <p class="sec-sub" lang="es">Diseñé y desarrollé en Microsoft SharePoint los portales que el cliente usa para tomar decisiones importantes: inventario y abastecimiento, cuentas por pagar y facturación, proveedores y facturas electrónicas, todo en un solo lugar y accesible desde el computador o el celular.</p>
+  <p class="sec-sub" lang="en">I designed and built the Microsoft SharePoint portals the client uses for key decisions: inventory and procurement, accounts payable and invoicing, suppliers and e-invoices — all in one place, on desktop or mobile.</p>
+  <div class="shot"><img src="../img/energuias-sharepoint.jpg" alt="Intranet SharePoint en escritorio y móvil" loading="lazy"></div>
+  <p class="note" style="margin-top:-18px;margin-bottom:24px" lang="es">Imagen de presentación (mockup) con contenido de ejemplo.</p><p class="note" style="margin-top:-18px;margin-bottom:24px" lang="en">Presentation mockup with sample content.</p>
+  <h3 lang="es">Cómo usé cada herramienta</h3><h3 lang="en">How I used each tool</h3>
+  <div class="tools">
+    <div class="tool"><b><span class="ic" style="background:#038387">SP</span>SharePoint Online</b>
+      <p lang="es">Sitio de comunicación moderno con web parts de héroe, noticias, enlaces rápidos e indicadores. Listas y bibliotecas para proveedores, facturas y stock.</p>
+      <p lang="en">Modern communication site with hero, news, quick-link and indicator web parts. Lists and libraries for suppliers, invoices and stock.</p></div>
+    <div class="tool"><b><span class="ic" style="background:#7b5cff">UX</span><span lang="es">Arquitectura de información</span><span lang="en">Information architecture</span></b>
+      <p lang="es">Ordené los contenidos por proceso de negocio (inventario, pagos, facturación) para que cada área llegue a lo suyo en pocos clics. Diseño responsive para móvil.</p>
+      <p lang="en">Organized content by business process (inventory, payments, invoicing) so each team reaches what it needs in a few clicks. Responsive mobile design.</p></div>
+    
+  </div>
+</div></section>
+
+
+
+<!-- ===== 3 POWER BI ===== -->
+<section class="proj" id="powerbi"><div class="wrap">
+  <div class="proj-head"><span class="proj-tag" style="background:#c99a00">02 · Power BI</span></div>
+  <h2 class="sec-title"><span lang="es">Cuadro de Mando Integral — Operaciones 2026</span><span lang="en">Balanced Scorecard — Operations 2026</span></h2>
+  <p class="sec-sub" lang="es">Dashboard de KPIs para la gerencia con navegación por país (Chile, Perú y LATAM consolidado) y por indicador: objetivos y metas, ventas, costos, OPEX y EBITDA. Compara el real contra la meta mes a mes y marca en rojo lo que está fuera de meta.</p>
+  <p class="sec-sub" lang="en">KPI dashboard for management with navigation by country (Chile, Peru and consolidated LATAM) and by indicator: goals and targets, sales, costs, OPEX and EBITDA. Compares actual vs target month by month and flags in red what's off target.</p>
+  <div class="shot"><img src="../img/energuias-powerbi.jpg" alt="Cuadro de Mando Integral en Power BI Desktop" loading="lazy"></div>
+  <h3 lang="es">Cómo usé cada herramienta</h3><h3 lang="en">How I used each tool</h3>
+  <div class="tools">
+    <div class="tool"><b><span class="ic" style="background:#c99a00">fx</span>DAX</b>
+      <p lang="es">Medidas para porcentaje real, porcentaje meta, acumulado del período, variación vs meta y estado (dentro o fuera de meta).</p>
+      <p lang="en">Measures for actual %, target %, period-to-date, variance vs target and status (on or off target).</p></div>
+    <div class="tool"><b><span class="ic" style="background:#12a37a">PQ</span>Power Query</b>
+      <p lang="es">Limpieza y unión de las fuentes por país en un solo modelo, con datos anonimizados para la demo.</p>
+      <p lang="en">Cleaning and merging country sources into one model, with anonymized data for the demo.</p></div>
+    <div class="tool"><b><span class="ic" style="background:#2f6bff">⇄</span><span lang="es">Navegación</span><span lang="en">Navigation</span></b>
+      <p lang="es">Menú lateral con botones y marcadores para moverse por país e indicador, filtro de país y exportación a Excel.</p>
+      <p lang="en">Side menu with buttons and bookmarks to move across countries and indicators, a country filter and Excel export.</p></div>
+    <div class="tool"><b><span class="ic" style="background:#e5484d">◉</span><span lang="es">Diseño visual</span><span lang="en">Visual design</span></b>
+      <p lang="es">Tarjetas KPI arriba, gráfico real vs meta, curva de variación y tabla de detalle al final: de lo general a lo particular.</p>
+      <p lang="en">KPI cards on top, actual-vs-target chart, variance curve and detail table last: from overview to detail.</p></div>
+  </div>
+</div></section>
+
+<!-- ===== 4 COTIZADOR ===== -->
+<section class="proj" id="cotizador" style="background:var(--surface-2)"><div class="wrap">
+  <div class="proj-head"><span class="proj-tag" style="background:#1f6f5c">03 · <span lang="es">Cotizador</span><span lang="en">Quoter</span></span><span class="proj-tag" style="background:#2f6bff"><span lang="es">Modelo de costos</span><span lang="en">Cost model</span></span></div>
+  <h2 class="sec-title"><span lang="es">Cotizador Maestro de flete EXW → Chile</span><span lang="en">Master EXW → Chile freight quoter</span></h2>
+  <p class="sec-sub" lang="es">Plataforma interna para el área de ventas. Con la dirección del proveedor, el destino en Chile, la carga y la fecha en que está lista, compara las opciones de embarque y entrega el precio de venta sugerido en segundos, en vez de pedir cotizaciones una por una.</p>
+  <p class="sec-sub" lang="en">An internal platform for the sales team. From the supplier's address, the destination in Chile, the cargo and its ready date, it compares shipping options and returns a suggested sale price in seconds, instead of requesting quotes one by one.</p>
+  <div class="shot"><img src="../img/energuias-cotizador.jpg" alt="Cotizador de flete EXW a Chile" loading="lazy"></div>
+  <h3 lang="es">Qué resuelve</h3><h3 lang="en">What it does</h3>
+  <div class="tools">
+    <div class="tool"><b><span class="ic" style="background:#1f6f5c">⚓</span><span lang="es">Compara 3 modalidades</span><span lang="en">Compares 3 modes</span></b>
+      <p lang="es">Marítimo contenedor completo (FCL), marítimo consolidado (LCL) y aéreo, con tránsito, fechas de llegada y etiquetas «más barato» y «más rápido».</p>
+      <p lang="en">Full-container sea (FCL), consolidated sea (LCL) and air, with transit time, arrival dates and "cheapest" / "fastest" labels.</p></div>
+    <div class="tool"><b><span class="ic" style="background:#2f6bff">$</span><span lang="es">Costo y precio de venta</span><span lang="en">Cost and sale price</span></b>
+      <p lang="es">Muestra el costo estimado y el precio de venta sugerido en USD, usando el dólar observado y el índice de flete del día.</p>
+      <p lang="en">Shows the estimated cost and suggested sale price in USD, using the day's observed dollar rate and freight index.</p></div>
+    <div class="tool"><b><span class="ic" style="background:#c99a00">▦</span><span lang="es">Reglas de carga</span><span lang="en">Cargo rules</span></b>
+      <p lang="es">Carga por pallets o por totales, apilable o no apilable, con las reglas de alto y superficie de cada modalidad explicadas en pantalla.</p>
+      <p lang="en">Cargo by pallets or totals, stackable or not, with each mode's height and floor-space rules explained on screen.</p></div>
+    <div class="tool"><b><span class="ic" style="background:#7b5cff">✉</span><span lang="es">Flujo rápido</span><span lang="en">Fast flow</span></b>
+      <p lang="es">Tres pasos (origen y destino, carga, elegir y exportar PDF), opción de pegar el correo del cliente, historial de cotizaciones y fluctuación del mercado.</p>
+      <p lang="en">Three steps (origin and destination, cargo, choose and export PDF), paste-the-client-email option, quote history and market fluctuation.</p></div>
+  </div>
+  <div class="btns" style="margin-top:36px"><a class="btn btn-primary" href="../index.html#projects">← <span lang="es">Ver más casos</span><span lang="en">More cases</span></a></div>
+</div></section>
+
+<div class="lightbox" id="lb"><img alt=""></div>
+<footer>© 2026 Johanna Rosales</footer>
+<script>
+  const lb=document.getElementById('lb');
+  document.querySelectorAll('.shot img').forEach(i=>i.addEventListener('click',()=>{lb.querySelector('img').src=i.src;lb.classList.add('on');}));
+  lb.addEventListener('click',()=>lb.classList.remove('on'));
+</script>
+</body>
+</html>
